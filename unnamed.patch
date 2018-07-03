@@ -1,0 +1,590 @@
+Index: Chapter5/src/main/java/com/course/testng/groups/GroupsOnClass1.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Chapter5/src/main/java/com/course/testng/groups/GroupsOnClass1.java	(date 1530629897140)
++++ Chapter5/src/main/java/com/course/testng/groups/GroupsOnClass1.java	(date 1530629897140)
+@@ -0,0 +1,15 @@
++package com.course.testng.groups;
++
++import org.testng.annotations.Test;
++
++@Test(groups = "stu")
++public class GroupsOnClass1 {
++
++
++    public void stu1(){
++        System.out.println("GroupsOnClass1中的syu1运行");
++    }
++    public void stu2(){
++        System.out.println("GroupsOnClass1中的syu2运行");
++    }
++}
+Index: Chapter5/src/main/java/com/course/testng/groups/GroupsOnClass2.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Chapter5/src/main/java/com/course/testng/groups/GroupsOnClass2.java	(date 1530629897124)
++++ Chapter5/src/main/java/com/course/testng/groups/GroupsOnClass2.java	(date 1530629897124)
+@@ -0,0 +1,15 @@
++package com.course.testng.groups;
++
++import org.testng.annotations.Test;
++
++@Test(groups = "stu")
++public class GroupsOnClass2 {
++
++    public void stu1(){
++        System.out.println("GroupsOnClass2中的syu1运行");
++    }
++    public void stu2(){
++        System.out.println("GroupsOnClass2中的syu2运行");
++    }
++
++}
+Index: Chapter5/src/main/java/com/course/testng/groups/GroupOnMethod.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Chapter5/src/main/java/com/course/testng/groups/GroupOnMethod.java	(date 1530629304479)
++++ Chapter5/src/main/java/com/course/testng/groups/GroupOnMethod.java	(date 1530629304479)
+@@ -0,0 +1,32 @@
++package com.course.testng.groups;
++
++import org.testng.annotations.AfterGroups;
++import org.testng.annotations.BeforeGroups;
++import org.testng.annotations.Test;
++
++public class GroupOnMethod {
++    @Test(groups = "server")
++    public void test1(){
++        System.out.println("这是服务端的测试方法111");
++    }
++    @Test(groups = "server")
++    public void test2(){
++        System.out.println("这是服务端的测试方法222");
++    }
++    @Test(groups = "client")
++    public void test3(){
++        System.out.println("这是客户端端的测试方法3333");
++    }
++    @Test(groups = "client")
++    public void test4(){
++        System.out.println("这是客户端的测试方法444");
++    }
++    @BeforeGroups("server")
++    public void beforeGroupsOnserver(){
++        System.out.println("这是服务端组运行之前的方法");
++    }
++    @AfterGroups("server")
++    public void afterGroupsOnserver(){
++        System.out.println("这是服务端组运行之后的方法");
++    }
++}
+Index: Chapter5/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Chapter5/pom.xml	(date 1530546393023)
++++ Chapter5/pom.xml	(date 1530546393023)
+@@ -0,0 +1,20 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project xmlns="http://maven.apache.org/POM/4.0.0"
++         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
++    <modelVersion>4.0.0</modelVersion>
++
++    <groupId>com.course.code</groupId>
++    <artifactId>Chapter5</artifactId>
++    <version>1.0-SNAPSHOT</version>
++    <dependencies>
++        <dependency>
++            <groupId>org.testng</groupId>
++            <artifactId>testng</artifactId>
++            <version>6.14.3</version>
++            <scope>compile</scope>
++        </dependency>
++    </dependencies>
++
++
++</project>
+\ No newline at end of file
+Index: Chapter5/src/main/java/com/course/testng/groups/GroupsOnClass3.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Chapter5/src/main/java/com/course/testng/groups/GroupsOnClass3.java	(date 1530629897151)
++++ Chapter5/src/main/java/com/course/testng/groups/GroupsOnClass3.java	(date 1530629897151)
+@@ -0,0 +1,15 @@
++package com.course.testng.groups;
++
++import org.testng.annotations.Test;
++
++@Test(groups = "teacher")
++public class GroupsOnClass3 {
++
++    public void teacher1(){
++        System.out.println("GroupsOnClass3中的teacher1运行");
++    }
++
++    public void teacher2(){
++        System.out.println("GroupsOnClass3中的teacher2运行");
++    }
++}
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/vcs.xml	(date 1530545933338)
++++ .idea/vcs.xml	(date 1530545933338)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: Chapter5/src/main/resources/groupsOnClass.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Chapter5/src/main/resources/groupsOnClass.xml	(date 1530630545704)
++++ Chapter5/src/main/resources/groupsOnClass.xml	(date 1530630545704)
+@@ -0,0 +1,23 @@
++<?xml version="1.0" encoding="UTF-8" ?>
++<suite name="suitename">
++    <test name="allrun">
++        <classes>
++            <class name="com.course.testng.groups.GroupsOnClass1"/>
++            <class name="com.course.testng.groups.GroupsOnClass2"/>
++            <class name="com.course.testng.groups.GroupsOnClass3"/>
++        </classes>
++    </test>
++
++    <test name="onlyRunTeacher">
++        <groups>
++            <run>
++                <include name="teacher"/>
++            </run>
++        </groups>
++        <classes>
++            <class name="com.course.testng.groups.GroupsOnClass1"/>
++            <class name="com.course.testng.groups.GroupsOnClass2"/>
++            <class name="com.course.testng.groups.GroupsOnClass3"/>
++        </classes>
++    </test>
++</suite>
+\ No newline at end of file
+Index: Chapter5/src/main/java/com/course/testng/suite/ExpectedException.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Chapter5/src/main/java/com/course/testng/suite/ExpectedException.java	(date 1530631432164)
++++ Chapter5/src/main/java/com/course/testng/suite/ExpectedException.java	(date 1530631432164)
+@@ -0,0 +1,25 @@
++package com.course.testng.suite;
++
++import org.testng.annotations.Test;
++
++public class ExpectedException {
++/**
++ * 什么时候回用到异常测试？
++ * 在我们期望结果为摸一个异常的时候
++ * 比如：我们传入了某些不合法的参数
++ */
++
++//这是一个试试会失败的异常测试
++    @Test(expectedExceptions=RuntimeException.class)
++    public void RunTimeExceptionsFile(){
++        System.out.println("这是一个失败的异常测试");
++    }
++
++    //这是一个成功的异常测试
++    @Test(expectedExceptions = RuntimeException.class)
++    public void RunTimeExceptionsSuccess(){
++        System.out.println("这是一个成功的异常测试");
++        throw new RuntimeException();
++
++    }
++}
+Index: Chapter5/Chapter5.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Chapter5/Chapter5.iml	(date 1530546395974)
++++ Chapter5/Chapter5.iml	(date 1530546395974)
+@@ -0,0 +1,18 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
++  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_5">
++    <output url="file://$MODULE_DIR$/target/classes" />
++    <output-test url="file://$MODULE_DIR$/target/test-classes" />
++    <content url="file://$MODULE_DIR$">
++      <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
++      <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
++      <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
++      <excludeFolder url="file://$MODULE_DIR$/target" />
++    </content>
++    <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
++    <orderEntry type="sourceFolder" forTests="false" />
++    <orderEntry type="library" name="Maven: org.testng:testng:6.14.3" level="project" />
++    <orderEntry type="library" name="Maven: com.beust:jcommander:1.72" level="project" />
++    <orderEntry type="library" name="Maven: org.apache-extras.beanshell:bsh:2.0b6" level="project" />
++  </component>
++</module>
+\ No newline at end of file
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/compiler.xml	(date 1530546095762)
++++ .idea/compiler.xml	(date 1530546095762)
+@@ -0,0 +1,16 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="CompilerConfiguration">
++    <annotationProcessing>
++      <profile name="Maven default annotation processors profile" enabled="true">
++        <sourceOutputDir name="target/generated-sources/annotations" />
++        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
++        <outputRelativeToContentRoot value="true" />
++        <module name="Chapter5" />
++      </profile>
++    </annotationProcessing>
++    <bytecodeTargetLevel>
++      <module name="Chapter5" target="1.5" />
++    </bytecodeTargetLevel>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/misc.xml	(date 1530546095752)
++++ .idea/misc.xml	(date 1530546095752)
+@@ -0,0 +1,13 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="JavaScriptSettings">
++    <option name="languageLevel" value="ES6" />
++  </component>
++  <component name="MavenProjectsManager">
++    <option name="originalFiles">
++      <list>
++        <option value="$PROJECT_DIR$/Chapter5/pom.xml" />
++      </list>
++    </option>
++  </component>
++</project>
+\ No newline at end of file
+Index: Chapter5/src/main/java/com/course/testng/suite/LoginTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Chapter5/src/main/java/com/course/testng/suite/LoginTest.java	(date 1530628108613)
++++ Chapter5/src/main/java/com/course/testng/suite/LoginTest.java	(date 1530628108613)
+@@ -0,0 +1,11 @@
++package com.course.testng.suite;
++
++import org.testng.annotations.Test;
++
++public class LoginTest {
++
++    @Test
++    public void loginTaobao(){
++        System.out.println("淘宝登录成功");
++    }
++}
+Index: .idea/AutoTest.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/AutoTest.iml	(date 1530545931303)
++++ .idea/AutoTest.iml	(date 1530545931303)
+@@ -0,0 +1,9 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="JAVA_MODULE" version="4">
++  <component name="NewModuleRootManager" inherit-compiler-output="true">
++    <exclude-output />
++    <content url="file://$MODULE_DIR$" />
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
+Index: Chapter5/src/main/resources/suite.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Chapter5/src/main/resources/suite.xml	(date 1530628349737)
++++ Chapter5/src/main/resources/suite.xml	(date 1530628349737)
+@@ -0,0 +1,17 @@
++<?xml version="1.0" encoding="UTF-8" ?>
++<suite name="test">
++    <test name="login">
++        <classes>
++            <class name="com.course.testng.suite.SuiteConfig"/>
++            <class name="com.course.testng.suite.LoginTest"/>
++        </classes>
++    </test>
++
++    <test name="pay">
++        <classes>
++            <class name="com.course.testng.suite.SuiteConfig"/>
++            <class name="com.course.testng.suite.PayTest"/>
++        </classes>
++    </test>
++</suite>
++
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/modules.xml	(date 1530546095773)
++++ .idea/modules.xml	(date 1530546095773)
+@@ -0,0 +1,9 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectModuleManager">
++    <modules>
++      <module fileurl="file://$PROJECT_DIR$/.idea/AutoTest.iml" filepath="$PROJECT_DIR$/.idea/AutoTest.iml" />
++      <module fileurl="file://$PROJECT_DIR$/Chapter5/Chapter5.iml" filepath="$PROJECT_DIR$/Chapter5/Chapter5.iml" />
++    </modules>
++  </component>
++</project>
+\ No newline at end of file
+Index: Chapter5/src/main/java/com/course/testng/suite/SuiteConfig.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Chapter5/src/main/java/com/course/testng/suite/SuiteConfig.java	(date 1530628581735)
++++ Chapter5/src/main/java/com/course/testng/suite/SuiteConfig.java	(date 1530628581735)
+@@ -0,0 +1,26 @@
++package com.course.testng.suite;
++
++import org.testng.annotations.AfterSuite;
++import org.testng.annotations.AfterTest;
++import org.testng.annotations.BeforeSuite;
++import org.testng.annotations.BeforeTest;
++
++public class SuiteConfig {
++    @BeforeSuite
++    public void beforeSuite(){
++        System.out.println("beforeSuite运行啦");
++    }
++    @AfterSuite
++    public void afterSuite(){
++        System.out.println("afterSuite运行啦");
++    }
++    @BeforeTest
++    public void beforeTest(){
++        System.out.println("beforeTest运行了");
++
++    }
++    @AfterTest
++    public void afterTest(){
++        System.out.println("afterTest运行了");
++    }
++}
+Index: Chapter5/bash.exe.stackdump
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Chapter5/bash.exe.stackdump	(date 1530546909563)
++++ Chapter5/bash.exe.stackdump	(date 1530546909563)
+@@ -0,0 +1,9 @@
++Stack trace:
++Frame        Function    Args
++000FFFFA1A8  0018005D19E (0018024212D, 00180223C26, 000FFFFA1A8, 000FFFF90A0)
++000FFFFA1A8  001800463F9 (00000000000, 00000000000, 00000000000, 001005F0D44)
++000FFFFA1A8  00180046432 (001802421E9, 000FFFFA058, 000FFFFA1A8, 00000000000)
++000FFFFA1A8  001800A9EEF (00000000000, 00000000000, 00000000000, 00000000000)
++000FFFFA1A8  001800AA13D (000FFFFA1C0, 00000000000, 00000000000, 00000000000)
++000FFFFA430  001800AB3A4 (000FFFFA1C0, 00000000000, 00000000000, 00000000000)
++End of stack trace
+Index: Chapter5/src/main/java/com/course/testng/IgnoreTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Chapter5/src/main/java/com/course/testng/IgnoreTest.java	(date 1530628876659)
++++ Chapter5/src/main/java/com/course/testng/IgnoreTest.java	(date 1530628876659)
+@@ -0,0 +1,18 @@
++package com.course.testng;
++
++import org.testng.annotations.Test;
++
++public class IgnoreTest {
++    @Test
++    public void ignore1(){
++        System.out.println("ignore1执行");
++    }
++    @Test(enabled = false)
++    public void ignore2(){
++        System.out.println("ignore2执行");
++    }
++    @Test
++    public void ignore3(){
++        System.out.println("ignore3执行");
++    }
++}
+Index: .idea/libraries/Maven__com_beust_jcommander_1_72.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/libraries/Maven__com_beust_jcommander_1_72.xml	(date 1530546395995)
++++ .idea/libraries/Maven__com_beust_jcommander_1_72.xml	(date 1530546395995)
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="Maven: com.beust:jcommander:1.72">
++    <CLASSES>
++      <root url="jar://$MAVEN_REPOSITORY$/com/beust/jcommander/1.72/jcommander-1.72.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$MAVEN_REPOSITORY$/com/beust/jcommander/1.72/jcommander-1.72-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$MAVEN_REPOSITORY$/com/beust/jcommander/1.72/jcommander-1.72-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
+Index: Chapter5/src/main/java/com/course/testng/suite/PayTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Chapter5/src/main/java/com/course/testng/suite/PayTest.java	(date 1530628155803)
++++ Chapter5/src/main/java/com/course/testng/suite/PayTest.java	(date 1530628155803)
+@@ -0,0 +1,10 @@
++package com.course.testng.suite;
++
++import org.testng.annotations.Test;
++
++public class PayTest {
++@Test
++    public void paySuccess(){
++        System.out.println("支付宝支付成功");
++    }
++}
+Index: Chapter5/src/main/java/com/course/testng/BasicAnnotation.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Chapter5/src/main/java/com/course/testng/BasicAnnotation.java	(date 1530627620452)
++++ Chapter5/src/main/java/com/course/testng/BasicAnnotation.java	(date 1530627620452)
+@@ -0,0 +1,42 @@
++package com.course.testng;
++
++import org.testng.annotations.*;
++
++public class BasicAnnotation {
++    //最基本的注解，用来把方法标记为测试的一部分
++    @Test
++    public void testCase1(){
++        System.out.println("这是测试用例1");
++
++    }
++    @Test
++    public  void testCase2(){
++        System.out.println("这是测试用例2");
++    }
++    @BeforeMethod
++    public void beforeMethod(){
++        System.out.println("这是在方法之前运行的");
++    }
++    @AfterMethod
++    public void afterMethod(){
++        System.out.println("这是在方法之后运行的");
++    }
++
++    @BeforeClass
++    public void beforeClass(){
++        System.out.println("beforeClass这是在类运行前运行");
++    }
++
++    @AfterClass
++    public void afterClass(){
++        System.out.println("afterClass这是在类运行之后运行");
++    }
++    @BeforeSuite
++    public void beforeSuite(){
++        System.out.println("beforeSuite执行套件");
++    }
++    @AfterSuite
++    public void afterSuite(){
++        System.out.println("afterSuite执行套件");
++    }
++}
+Index: .idea/libraries/Maven__org_apache_extras_beanshell_bsh_2_0b6.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/libraries/Maven__org_apache_extras_beanshell_bsh_2_0b6.xml	(date 1530546396005)
++++ .idea/libraries/Maven__org_apache_extras_beanshell_bsh_2_0b6.xml	(date 1530546396005)
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="Maven: org.apache-extras.beanshell:bsh:2.0b6">
++    <CLASSES>
++      <root url="jar://$MAVEN_REPOSITORY$/org/apache-extras/beanshell/bsh/2.0b6/bsh-2.0b6.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$MAVEN_REPOSITORY$/org/apache-extras/beanshell/bsh/2.0b6/bsh-2.0b6-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$MAVEN_REPOSITORY$/org/apache-extras/beanshell/bsh/2.0b6/bsh-2.0b6-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
+Index: .idea/libraries/Maven__org_testng_testng_6_14_3.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/libraries/Maven__org_testng_testng_6_14_3.xml	(date 1530546396014)
++++ .idea/libraries/Maven__org_testng_testng_6_14_3.xml	(date 1530546396014)
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="Maven: org.testng:testng:6.14.3">
++    <CLASSES>
++      <root url="jar://$MAVEN_REPOSITORY$/org/testng/testng/6.14.3/testng-6.14.3.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$MAVEN_REPOSITORY$/org/testng/testng/6.14.3/testng-6.14.3-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$MAVEN_REPOSITORY$/org/testng/testng/6.14.3/testng-6.14.3-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
+Index: test.txt
+===================================================================
+--- test.txt	(date 1530543271000)
++++ test.txt	(date 1530543271000)
+@@ -1,2 +0,0 @@
+-wqeqeqwe
+-这是需要合并的内容
