@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<suite name="thread">
+    <!--parallel="methods"是线程是在方法级别运行，thread-count="3"是指三个线程-->
+    <!--
+        xml文件配置中这种方式不能指定线程池，只有方法上才可以指定线程池
+    -->
+    <test name="multiThread" parallel="methods" thread-count="3">
+
+        <classes>
+            <class name="com.course.testng.multiThread.MultiThreadOnXml"/>
+        </classes>
+
+    </test>
+</suite>
