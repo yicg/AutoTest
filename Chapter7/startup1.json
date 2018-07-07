@@ -1,0 +1,16 @@
+[
+  {
+    "description":"这是我们的第一个moco例子",
+    "request":{
+      "headers":{
+        "Content-Type":"application/json",
+        "charset":"utf-8"
+      },
+      "uri":"/demo"
+    },
+    "response":{
+      "json":"这是第一个demo"
+
+    }
+  }
+]
