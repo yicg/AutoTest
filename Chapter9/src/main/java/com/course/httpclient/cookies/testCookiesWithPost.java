@@ -1,4 +1,8 @@
 package com.course.httpclient.cookies;
+/**
+ * 运用httpClient框架练习一个需要携带cookies才能进行的post请求
+ * 2018.07.17
+ */
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.CookieStore;
@@ -12,16 +16,19 @@ import org.json.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class testCookiesForPost {
+public class testCookiesWithPost {
 
     private String url;
     private ResourceBundle bundle;
     private CookieStore store;
+
     @BeforeTest
     public void beforeTest(){
         bundle=ResourceBundle.getBundle("application",Locale.CHINA);
@@ -33,57 +40,65 @@ public class testCookiesForPost {
          * 拼接最终字符串
          */
         String uri=bundle.getString("getCookies.uri");
-        String testUrl=this.url+uri;
+        String resultUrl=this.url+uri;
         //测试逻辑代码书写
-        HttpGet get=new HttpGet(testUrl);
+        HttpGet get=new HttpGet(resultUrl);
         DefaultHttpClient client=new DefaultHttpClient();
         HttpResponse response=client.execute(get);
-        //定义一个变量，用来储存响应值
+        //定义一个变量来存储响应结果
         String result=EntityUtils.toString(response.getEntity(),"utf-8");
         System.out.println(result);
-        //设置Cookies信息
-        this.store=client.getCookieStore();
-        //遍历cookie值
+        /**
+         * 设置生成cookies
+         * 重点
+         */
+        store=client.getCookieStore();
         List<Cookie> cookieList=store.getCookies();
         for(Cookie cookie:cookieList){
             String name=cookie.getName();
             String value=cookie.getValue();
             System.out.println("cookiesName="+name+";  cookiesValue="+value);
         }
+
     }
     @Test(dependsOnMethods = {"getCookies"})
-    public void myCookiesForPost() throws IOException {
+    //需要依赖获取cookies的get方法
+    public void postWithCookies() throws IOException {
+
         String uri=bundle.getString("test.post.with.cookies");
         String testUrl=this.url+uri;
-        //定义一个请求方式
+        //书写逻辑测试代码
+        //设置请求方式
         HttpPost post=new HttpPost(testUrl);
         DefaultHttpClient client=new DefaultHttpClient();
-        //定义参数
+
+        //设置请求头信息
+        post.setHeader("content-type","application/json");
+        //设置参数
         JSONObject param=new JSONObject();
         param.put("name","huhansan");
         param.put("age","18");
-        //设置请求header
-        post.setHeader("content-type","application/json");
-        //把参数放到方法中
+        //发送Cookies信息
+        client.setCookieStore(this.store);
+        //把参数参入到方法中
         StringEntity entity=new StringEntity(param.toString());
         post.setEntity(entity);
-        //设置cookies
-        client.setCookieStore(this.store);
-        //设置变量存储响应值
-        String result;
-        //响应结果
+        //设置响应信息
         HttpResponse response=client.execute(post);
-        result=EntityUtils.toString(response.getEntity(),"utf-8");
+
+        //定义一个变量存储响应信息
+        String result=EntityUtils.toString(response.getEntity(),"utf-8");
+        //输出响应值
         System.out.println(result);
-        //把结果转换成json格式
-        JSONObject jsonResult =new JSONObject(result);
-        String ActualResult= (String) jsonResult.get("huhansan");
-        String ActualStatus= (String) jsonResult.get("status");
-        /**
-         * 比较预期和实际结果
-         * 第一个值是期望结果，第二个值是实际结果
-         */
-        Assert.assertEquals("success",ActualResult);
-        Assert.assertEquals("1",ActualStatus);
+
+        //把响应值字符串转化成json格式
+        JSONObject jsonResult=new JSONObject(result);
+        //判断比较响应结果预期和实际
+        //输出实际值
+        String actualValue= (String) jsonResult.get("huhansan");
+        String actualStatus= (String) jsonResult.get("status");
+        //比较预期结果和实际结果
+        Assert.assertEquals("success",actualValue);
+        Assert.assertEquals("1",actualStatus);
     }
 }
