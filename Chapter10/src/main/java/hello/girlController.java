@@ -19,7 +19,7 @@ public class girlController {
 
         return girlReprotise.findAll();
     }
-    /**
+    /** -
      * 新增一个女生
      */
     Girl g;

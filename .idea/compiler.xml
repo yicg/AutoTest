@@ -10,6 +10,7 @@
         <module name="Chapter5" />
         <module name="Chapter6" />
         <module name="Chapter9" />
+        <module name="Demo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -17,6 +18,7 @@
       <module name="Chapter5" target="1.5" />
       <module name="Chapter6" target="6" />
       <module name="Chapter9" target="1.5" />
+      <module name="Demo" target="1.8" />
       <module name="springBoot" target="1.8" />
     </bytecodeTargetLevel>
   </component>
