@@ -1,0 +1,15 @@
+com\course\cases\AddUserTest.class
+com\course\utils\ConfigFile.class
+com\course\model\InterfaceName.class
+com\course\model\Getuserlistcase.class
+com\course\utils\DatabaseUtil.class
+com\course\cases\UpdateUserInfoTest.class
+com\course\config\TestConfig.class
+com\course\cases\loginTest.class
+com\course\model\Getuserinfocase.class
+com\course\cases\GetUserInfoCase.class
+com\course\model\AddUserCase.class
+com\course\model\updateuserinfocase.class
+com\course\model\Logincase.class
+com\course\model\User.class
+com\course\cases\GetUserListCase.class
